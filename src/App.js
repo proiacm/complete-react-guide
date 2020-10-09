@@ -10,7 +10,12 @@ class App extends Component {
       ]
   }
 
-  // all React components must render!
+  switchNameHandler = () => {
+    // console.log('was clicked!')
+    
+  }
+
+  // all React components must render or return!
   render() {
     return (
       // everything here is JSX not HTML
@@ -18,7 +23,7 @@ class App extends Component {
       {/* we will nest all other components here and only render the root App in ReactDOM render */}
        <h1>Hi, I'm a React App!</h1>
        <p>I'm writing more elements in the div</p>
-       <button>Switch Name</button>
+       <button onClick={this.switchNameHandler}>Switch Name</button>
        <Person  name={this.state.people[0].name} age={this.state.people[0].age}>Job: Software Developer</Person>
        <Person name={this.state.people[1].name} age={this.state.people[1].age}/>
        {/* If we inspect the element in the browser, the Person component is nothing more than a p tag within the main div */}
