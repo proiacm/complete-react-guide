@@ -12,7 +12,11 @@ class App extends Component {
 
   switchNameHandler = () => {
     // console.log('was clicked!')
-    
+    // DON'T MUTATE STATE DIRECTLY. DON'T DO THIS: this.state.people[0].name = 'CiaraMaria'
+    this.setState({people: [
+        { name: 'CiaraMaria', age: '29'},
+        { name: 'Ryan', age: '34'}
+    ]})
   }
 
   // all React components must render or return!
