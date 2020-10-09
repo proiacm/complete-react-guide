@@ -3,6 +3,13 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+      people: [
+        { name: 'Maria', age: '29'},
+        { name: 'Ryan', age: '34'}
+      ]
+  }
+
   // all React components must render!
   render() {
     return (
@@ -11,8 +18,9 @@ class App extends Component {
       {/* we will nest all other components here and only render the root App in ReactDOM render */}
        <h1>Hi, I'm a React App!</h1>
        <p>I'm writing more elements in the div</p>
-       <Person  name='Maria' age='29'>Job: Software Developer</Person>
-       <Person name='Ryan' age='34'/>
+       <button>Switch Name</button>
+       <Person  name={this.state.people[0].name} age={this.state.people[0].age}>Job: Software Developer</Person>
+       <Person name={this.state.people[1].name} age={this.state.people[1].age}/>
        {/* If we inspect the element in the browser, the Person component is nothing more than a p tag within the main div */}
       </div>
     );
