@@ -1,7 +1,15 @@
 import React from 'react';
 
-const person = () => {
-    return <p>I'm a Person and I am {Math.floor(Math.random() * 30)} years old</p>
+// props is merely an object with all of the attributes of the component
+// when using a class-based components, we use this.props
+//children refers to any elements between the opening and closing tag of the component 
+const person = (props) => {
+    return (
+        <div>
+            <p>I'm {props.name} and I am {props.age} years old</p>
+            <p>{props.children}</p>
+        </div>
+    )
 }
 
 export default person;
