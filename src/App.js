@@ -12,13 +12,20 @@ class App extends Component {
       ]
     }
 
-    switchNameHandler = () => {
+    switchNameHandler = (newName) => {
       // DON'T MUTATE STATE DIRECTLY. DON'T DO THIS: this.state.people[0].name = 'CiaraMaria'
       this.setState({people: [
-          { name: 'CiaraMaria', age: '29'},
+          { name: newName, age: '29'},
           { name: 'Ryan', age: '34'}
       ]})
       }
+
+    nameChangeHandler = (event) => {
+      this.setState({people: [
+        { name: 'Maria', age: '29'},
+        { name: event.target.value , age: '34'}
+    ]})
+    }  
       
     render () {    
       return (
@@ -28,8 +35,8 @@ class App extends Component {
         <h1>Hi, I'm a React App!</h1>
         <p>I'm writing more elements in the div</p>
         <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person  name={this.state.people[0].name} age={this.state.people[0].age} changeName={this.switchNameHandler} >Job: Software Developer</Person>
-        <Person name={this.state.people[1].name} age={this.state.people[1].age}/>
+        <Person  name={this.state.people[0].name} age={this.state.people[0].age} click={this.switchNameHandler.bind(this, 'CiaraMaria')}>Job: Software Developer</Person>
+        <Person name={this.state.people[1].name} age={this.state.people[1].age} change={this.nameChangeHandler}/>
         {/* If we inspect the element in the browser, the Person component is nothing more than a p tag within the main div */}
         </div>
       );
