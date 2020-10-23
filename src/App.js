@@ -20,11 +20,24 @@ class App extends Component {
       this.setState({people: people})
     }
 
-    nameChangeHandler = (event) => {
-      this.setState({people: [
-        { name: 'Maria', age: '29'},
-        { name: event.target.value , age: '34'}
-    ]})
+    nameChangeHandler = (event, id) => {
+      // find the correct person
+      const personIndex = this.state.people.findIndex(p => {
+        return p.id === id;
+      })
+
+      //spread into new object so as to not mutate original state object
+      const person = {...this.state.people[personIndex]};
+      // const person = Object.assign({}, this.state.people[personIndex]) alternative for above
+
+      //set person's name attribute to the value from the event
+      person.name = event.target.value;
+
+      // spread people array to make copy 
+      const people = [...this.state.people];
+      people[personIndex] = person; // set the element at that specific index with the new value
+
+      this.setState({people: people});
     }  
 
     togglePeopleHandler = () => {
@@ -48,7 +61,7 @@ class App extends Component {
         people = (
           <div>
             {this.state.people.map((person, index) => {
-              return <Person key={person.id} click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} />
+              return <Person key={person.id} click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} change={(event) => this.nameChangeHandler(event, person.id)}/>
             })}
           </div>
         );
