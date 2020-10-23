@@ -14,7 +14,7 @@ class App extends Component {
     }
 
     deletePersonHandler = (personIndex) => {
-      const people = this.state.people;
+      const people = this.state.people.slice(); // slice with no arguments makes a copy which we can then mutate without affecting original
       people.splice(personIndex, 1);
       this.setState({people: people})
     }
