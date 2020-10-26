@@ -1,6 +1,7 @@
 import React, { Component } from 'react'; 
 import './App.css';
 import Person from './Person/Person';
+import Radium from 'radium';
 
 
 class App extends Component {
@@ -8,7 +9,8 @@ class App extends Component {
      state = { 
        people: [
         { id: '1', name: 'Maria', age: '29'},
-        { id: '2', name: 'Ryan', age: '34'}
+        { id: '2', name: 'Ryan', age: '34'},
+        { id: '3', name: 'Gio', age: '11'}
       ],
       showPeople: false
     }
@@ -70,11 +72,19 @@ class App extends Component {
         style.backgroundColor = 'red';
       }
 
+      let classes = [];
+      if (this.state.people.length <= 2){
+        classes.push('red'); // classes = ['red']
+      }
+      if (this.state.people.length <= 1) {
+        classes.push('bold'); // classes = ['red', 'bold']
+      }
+
       return (
         // everything here is JSX not HTML
         <div className="App"> 
           <h1>Hi, I'm a React App!</h1>
-          <p>I'm writing more elements in the div</p>
+          <p className={classes.join(' ')}>I will change based on length of list</p>
           <button style={style} onClick={this.togglePeopleHandler}>Toggle People</button>
           {people}
         </div>
@@ -82,4 +92,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Radium(App);
