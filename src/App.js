@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import './App.css';
 import Person from './Person/Person';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 
 class App extends Component {
@@ -89,13 +89,14 @@ class App extends Component {
       }
 
       return (
-        // everything here is JSX not HTML
+        <StyleRoot>
         <div className="App"> 
           <h1>Hi, I'm a React App!</h1>
           <p className={classes.join(' ')}>I will change based on length of list</p>
           <button style={style} onClick={this.togglePeopleHandler}>Toggle People</button>
           {people}
         </div>
+        </StyleRoot>
       );
     }
 }
