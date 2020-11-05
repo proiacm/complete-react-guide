@@ -48,7 +48,9 @@ class App extends Component {
       this.setState({showPeople: !doesShow}) // if doesShow is true it sets to false, if doesShow is false it sets to true
     }
       
-    render () {   
+    render () {  
+      
+      let btnClass = [classes.Button];
 
       let people = null;
 
@@ -60,6 +62,7 @@ class App extends Component {
             })}
           </div>
         );
+        btnClass.push(classes.Red);
       }
 
       let assignedClasses = [];
@@ -74,7 +77,7 @@ class App extends Component {
           <div className={classes.App}> 
             <h1>Hi, I'm a React App!</h1>
             <p className={assignedClasses.join(' ')}>I will change based on length of list</p>
-            <button className={classes.Button} onClick={this.togglePeopleHandler}>Toggle People</button>
+            <button className={btnClass.join(' ')} onClick={this.togglePeopleHandler}>Toggle People</button>
             {people}
           </div>
       );
