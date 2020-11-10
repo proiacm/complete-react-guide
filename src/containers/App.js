@@ -74,9 +74,7 @@ class App extends Component {
 
       return (
           <div className={classes.App}> 
-            <h1>Hi, I'm a React App!</h1>
-            <p className={assignedClasses.join(' ')}>I will change based on length of list</p>
-            <button className={btnClass.join(' ')} onClick={this.togglePeopleHandler}>Toggle People</button>
+
             {people}
           </div>
       );
