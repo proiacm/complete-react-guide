@@ -3,7 +3,6 @@ import classes from './App.css';
 import People from '../components/People/People';
 import Cockpit from '../components/Cockpit/Cockpit';
 
-
 class App extends Component {
    
      state = { 
@@ -54,7 +53,7 @@ class App extends Component {
       
       return (
           <div className={classes.App}> 
-            <Cockpit showPeople={this.state.showPeople} people={this.state.people} clicked={this.togglePeopleHandler}/>
+            <Cockpit title={this.props.appTitle} showPeople={this.state.showPeople} people={this.state.people} clicked={this.togglePeopleHandler}/>
             {people}
           </div>
       );
