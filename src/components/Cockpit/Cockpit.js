@@ -1,11 +1,26 @@
 import React from 'react';
+import classes from './Cockpit.css';
 
 const Cockpit = (props) => {
+
+    let btnClass = '';
+    if (props.showPeople){
+        btnClass = classes.Red;
+    }
+
+    let assignedClasses = [];
+    if (props.people.length <= 2){
+      assignedClasses.push(classes.red);
+    }
+    if (props.people.length <= 1) {
+      assignedClasses.push(classes.bold);
+    }
+
     return(
-        <div>
+        <div className={classes.Cockpit}>
             <h1>Hi, I'm a React App!</h1>
-            <p className={assignedClasses.join(' ')}>I will change based on length of list</p>
-            <button className={btnClass.join(' ')} onClick={this.togglePeopleHandler}>Toggle People</button>
+            <p className={assignedClasses}>I will change based on length of list</p>
+            <button className={btnClass} onClick={props.clicked}>Toggle People</button>
         </div>
     );
 }
