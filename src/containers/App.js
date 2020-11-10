@@ -58,9 +58,7 @@ class App extends Component {
       if (this.state.showPeople) {
         people = (
           <div>
-            {this.state.people.map((person, index) => {
-              return <ErrorBoundary key={person.id}><Person click={() => this.deletePersonHandler(index)} name={person.name} age={person.age} change={(event) => this.nameChangeHandler(event, person.id)}/></ ErrorBoundary>
-            })}
+             <People people={this.state.people} clicked={this.deletePersonHandler} changed={this.nameChangeHandler}/>
           </div>
         );
         btnClass.push(classes.Red);
